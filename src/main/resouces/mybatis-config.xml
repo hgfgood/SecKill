@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--全局设置-->
+    <settings>
+        <!--使用jdbc的getGenerateKeys获取数据库自增主键值-->
+        <setting name="getGenerateKeys" value="true"/>
+        <!--使用列的别名替换列明-->
+        <setting name="userColoumnLabel" value="true"/>
+        <!--使用驼峰命名发-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+
+
+    </settings>
+</configuration>
