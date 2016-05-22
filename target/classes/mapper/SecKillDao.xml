@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seckill.dao.SecKillDao">
+    <insert id="insertSuccessKill">
+        INSERT IGNORE INTO
+          seckill (item_id,status,phone)
+        VALUES
+          ( #{itemId}, 1, #{phone})
+    </insert>
+
+    <!--告诉mybatis吧结果映射到SecKill的属性item-->
+    <!--可以自由控制sql语句-->
+    <select id="getSecKillById" resultType="SecKill">
+        SELECT
+          k.item_id,
+          k.phone,
+          k.status,
+          k.kill_time,
+          i.name "item.name",
+          i.number "item.number",
+          i.create_time "item.create_time",
+          i.start_time "item.start_time",
+          i.end_time "item.end_time"
+        FROM
+          seckill k INNER JOIN secitem i ON  i.item_id = k.item_id
+        WHERE k.item_id=#{itemId} and k.phone=#{phone}
+    </select>
+
+</mapper>

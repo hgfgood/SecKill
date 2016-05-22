@@ -1,6 +1,7 @@
 package com.seckill.dao;
 
 import com.seckill.entry.SecItem;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  *
  * Created by hgf on 16-5-21.
  */
-public interface SecItemDaoInterface {
+public interface SecItemDao {
 
     /**
      * 秒杀成功后，商品数量减。
@@ -18,7 +19,7 @@ public interface SecItemDaoInterface {
      * @param killTime 秒杀时间
      * @return 返回 0 表示没有更行成功，大于0表示更新成功。
      */
-    public int reduceNumber(long itemId, Date killTime);
+    public int reduceNumber(@Param("itemId") long itemId, @Param("killTime") Date killTime);
 
     /**
      * 通过item id查询商品信息
@@ -33,5 +34,5 @@ public interface SecItemDaoInterface {
      * @param limit 查询数量
      * @return 查询的描述商品集合
      */
-    public List<SecItem> queryAllItems(int offset, int limit);
+    public List<SecItem> queryAllItems(@Param("offset") int offset, @Param("limit") int limit);
 }

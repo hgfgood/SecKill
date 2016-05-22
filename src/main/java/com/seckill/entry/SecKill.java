@@ -15,7 +15,7 @@ public class SecKill {
      * status=1     付款
      */
     private short status;
-    private Date kiilTime;
+    private Date killTime;
     private SecItem item;
 
     public long getItemId() {
@@ -42,14 +42,6 @@ public class SecKill {
         this.status = status;
     }
 
-    public Date getKiilTime() {
-        return kiilTime;
-    }
-
-    public void setKiilTime(Date kiilTime) {
-        this.kiilTime = kiilTime;
-    }
-
     public SecItem getItem() {
         return item;
     }
@@ -58,13 +50,22 @@ public class SecKill {
         this.item = item;
     }
 
+    public Date getKillTime() {
+        return killTime;
+    }
+
+    public void setKillTime(Date killTime) {
+        this.killTime = killTime;
+    }
+
     @Override
     public String toString() {
-        return "Seckill{" +
+        return "SecKill{" +
                 "itemId=" + itemId +
                 ", phone=" + phone +
-                ", state=" + status +
-                ", kiilTime=" + kiilTime +
+                ", status=" + status +
+                ", killTime=" + killTime +
+                ", item=" + item +
                 '}';
     }
 }
