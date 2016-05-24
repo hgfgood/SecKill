@@ -14,8 +14,8 @@ CREATE TABLE secitem(
   name VARCHAR(120) NOT NULL  COMMENT '商品名',
   number INT NOT NULL COMMENT '商品数量',
   create_time TIMESTAMP NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP COMMENT '秒杀商品创建时间',
-  start_time TIMESTAMP NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP COMMENT '秒杀开始时间',
-  end_time TIMESTAMP NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP COMMENT '秒杀结束时间',
+  start_time TIMESTAMP NOT NULL DEFAULT current_timestamp COMMENT '秒杀开始时间',
+  end_time TIMESTAMP NOT NULL DEFAULT current_timestamp COMMENT '秒杀结束时间',
   PRIMARY KEY (item_id),
   KEY index_start_time(start_time),
   KEY index_end_time(end_time),
@@ -38,7 +38,7 @@ INSERT INTO secitem(name,number,start_time,end_time)
 CREATE TABLE seckill(
   item_id BIGINT NOT NULL COMMENT '秒杀商品ID',
   phone BIGINT NOT NULL COMMENT '秒杀用户电话',
-  status TINYINT NOT NULL DEFAULT 0 COMMENT '秒杀状态：-1无效，0成功，1付款',
+  status TINYINT NOT NULL DEFAULT 0 COMMENT '秒杀状态：-1无效，1成功，2付款',
   kill_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '秒杀成功时间',
   PRIMARY KEY (item_id,phone),
   KEY index_create_time(kill_time)
