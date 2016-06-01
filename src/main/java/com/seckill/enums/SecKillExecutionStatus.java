@@ -6,7 +6,7 @@ package com.seckill.enums;
 public enum SecKillExecutionStatus {
     SUCCESS(1,"秒杀成功"),
     END(-1,"秒杀结束"),
-    REPEAT(-2,"重复提交"),
+    REPEAT(-2,"重复秒杀"),
     DATE_REWRITE(-3,"数据篡改"),
     INNER_ERROR(-4,"系统错误");
 

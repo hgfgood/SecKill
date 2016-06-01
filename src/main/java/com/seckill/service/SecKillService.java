@@ -40,6 +40,8 @@ public interface SecKillService {
     /**
      * 执行秒杀
      *
+     * 使用异常告诉spring声明式事务是提交还是回滚，出现异常就回滚
+     *
      * @param itemId 秒杀商品id
      * @param userPhone 用户手机号
      * @param md5 暴露秒杀地址的md5
@@ -50,4 +52,14 @@ public interface SecKillService {
      */
     public SecKillExecution executeSecKill(long itemId, long userPhone, String md5) throws SecKillException, RepeatSecKillException, ClosedSecKillException;
 
+
+    /**
+     *使用存储过程秒杀
+     *
+     * @param itemId
+     * @param userPhone
+     * @param md5
+     * @return
+     */
+    public SecKillExecution executeSeckillProcedure(long itemId, long userPhone, String md5);
 }

@@ -52,9 +52,10 @@ public class SecKillServiceTest {
     @Test
     public void testSecKillServiceLogic() {
         Exposer exposer = secKillService.exposeSecKillUrl(itemId);
-        long phone = 13716112488L;
+        long phone = 13716112483L;
         logger.info("exposer={}", exposer);
         String md5 = exposer.getMd5();
+        logger.info("md5={}",md5);
         try {
             SecKillExecution execution = secKillService.executeSecKill(itemId, phone, md5);
             logger.info("execution={}", execution);
@@ -66,5 +67,18 @@ public class SecKillServiceTest {
         }
     }
 
+
+    @Test
+    public void testExecuteSeckillProcedure(){
+        long itemid =1000;
+        long phone = 13716112481L;
+        Exposer exposer = secKillService.exposeSecKillUrl(itemid);
+        if(exposer!=null){
+            String md5 = exposer.getMd5();
+
+            SecKillExecution secKillExecution = secKillService.executeSeckillProcedure(itemid,phone,md5);
+            logger.info("execution={}", secKillExecution);
+        }
+    }
 
 }

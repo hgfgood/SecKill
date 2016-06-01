@@ -82,22 +82,25 @@ public class SecKillController {
         if (phone == null) {
             return new SecKillResult<SecKillExecution>(false, "未注册");
         }
-        SecKillResult<SecKillExecution> result = null;
-        try {
-            SecKillExecution execution = secKillService.executeSecKill(itemId, phone, md5);
-            result = new SecKillResult<SecKillExecution>(true, execution);
-        }catch (RepeatSecKillException e){
-            SecKillExecution execution = new SecKillExecution(itemId,SecKillExecutionStatus.REPEAT);
-            result = new SecKillResult<SecKillExecution>(true,execution);
-        }catch (ClosedSecKillException e){
-            SecKillExecution execution = new SecKillExecution(itemId,SecKillExecutionStatus.END);
-            result = new SecKillResult<SecKillExecution>(true,execution);
-        }
-        catch (Exception e) {
-            logger.error(e.getMessage(),e);
-            SecKillExecution execution = new SecKillExecution(itemId, SecKillExecutionStatus.INNER_ERROR);
-            result = new SecKillResult<SecKillExecution>(true, execution);
-        }
+//        SecKillResult<SecKillExecution> result = null;
+//        try {
+//            SecKillExecution execution = secKillService.executeSecKill(itemId, phone, md5);
+//            result = new SecKillResult<SecKillExecution>(true, execution);
+//        }catch (RepeatSecKillException e){
+//            SecKillExecution execution = new SecKillExecution(itemId,SecKillExecutionStatus.REPEAT);
+//            result = new SecKillResult<SecKillExecution>(true,execution);
+//        }catch (ClosedSecKillException e){
+//            SecKillExecution execution = new SecKillExecution(itemId,SecKillExecutionStatus.END);
+//            result = new SecKillResult<SecKillExecution>(true,execution);
+//        }
+//        catch (Exception e) {
+//            logger.error(e.getMessage(),e);
+//            SecKillExecution execution = new SecKillExecution(itemId, SecKillExecutionStatus.INNER_ERROR);
+//            result = new SecKillResult<SecKillExecution>(true, execution);
+//        }
+
+        SecKillExecution secKillExecution = secKillService.executeSeckillProcedure(itemId,phone,md5);
+        SecKillResult<SecKillExecution> result = new SecKillResult<SecKillExecution>(true,secKillExecution);
 
         return result;
     }

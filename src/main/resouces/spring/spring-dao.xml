@@ -51,4 +51,11 @@
         <property name="basePackage" value="com.seckill.dao"/>
 
     </bean>
+
+    <!--redis 配置-->
+    <bean id="exposeUrlCache" class="com.seckill.dao.cache.SeckItemCache">
+        <constructor-arg name="host" value="127.0.0.1"/>
+        <constructor-arg name="port" value="6379"/>
+    </bean>
+
 </beans>
